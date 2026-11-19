@@ -4,6 +4,9 @@ Inspect a GIF in your browser without uploading it. Check metadata and optional
 maximum width, height, and KiB targets. Zero dependencies. MIT licensed,
 Copyright 2026 Moxion.
 
+[Live demo](https://kaixin20190930.github.io/moxion-gif-checker/) ·
+[Source](https://github.com/kaixin20190930/moxion-gif-checker)
+
 ## Run locally
 
 Requires Node.js 20 or newer. From this directory:
