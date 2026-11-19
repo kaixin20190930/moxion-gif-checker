@@ -1,8 +1,8 @@
 # GIF Checker
 
-Independent local-only candidate for LOCAL-GIF-CHECKER-20261119. English,
-single-file metadata inspection and optional maximum width, height, and KiB
-targets. Zero dependencies. MIT licensed, Copyright 2026 Moxion.
+Inspect a GIF in your browser without uploading it. Check metadata and optional
+maximum width, height, and KiB targets. Zero dependencies. MIT licensed,
+Copyright 2026 Moxion.
 
 ## Run locally
 
@@ -22,10 +22,9 @@ node --test
 git diff --check
 ```
 
-No installation, build, deployment, CI, public upload, or remote repository is
-needed. This private standalone directory does not include Moxion git history
-and must not be treated as a main-app integration or deployment candidate.
-`private: true` also prevents accidental npm publication.
+No installation or build is needed. This is a standalone static project, not
+the Moxion application. The package's `private: true` prevents accidental npm
+publication; it does not restrict using or hosting this MIT-licensed project.
 
 ## Checks and limits
 
@@ -60,10 +59,8 @@ The local server reads only its own static assets and never receives a GIF.
 
 ## Source provenance
 
-Parser source audited read-only:
-`/private/tmp/moxion-stepthrough-faq/src/lib/gif-asset-specs.ts`, at the supplied
-`origin/latest` audit SHA `fa668c469dad1c2e719fefee2e951306a2da3aac`.
-Its contents were cross-checked against `git show` at that exact SHA.
+The parser was extracted from Moxion's pure GIF metadata parser, audited at
+source revision `fa668c469dad1c2e719fefee2e951306a2da3aac`.
 
 Only pure byte parsing and equivalent metadata types were extracted into
 `gif-parser.js` (native JavaScript with JSDoc). Internal host allowlists,
@@ -71,5 +68,6 @@ destination assumptions/rules, timestamps, and application dependencies were
 not copied. Independent strict bounds/trailer and malformed-structure checks
 were added. The original repository and history remain untouched.
 
-Browser, keyboard, responsive-layout and content-network acceptance belong to
-the controller. Unit tests and source inspection do not claim browser QA.
+The test suite covers metadata parsing, malformed files, size limits and target
+comparisons. Metadata inspection is not a guarantee that a GIF will decode or
+be accepted by another platform.
