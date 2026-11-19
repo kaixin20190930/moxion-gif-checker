@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'none'; connect-src 'none'; font-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
+  <meta name="description" content="Local GIF metadata and size target checker.">
+  <title>GIF Checker</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <main>
+    <header><h1>GIF Checker</h1><span class="badge">Local only</span></header>
+    <section aria-labelledby="file-heading">
+      <h2 id="file-heading">GIF file</h2>
+      <div id="drop-zone">
+        <label for="file">Choose or drop one GIF</label>
+        <input id="file" type="file" accept=".gif,image/gif" aria-describedby="file-limit">
+        <p id="file-limit">Maximum 20 MiB (20,971,520 bytes).</p>
+      </div>
+      <div class="actions"><button id="reset" type="button">Reset</button><p id="status" role="status" aria-live="polite"></p></div>
+      <p id="error" role="alert" hidden></p>
+    </section>
+    <section aria-labelledby="targets-heading">
+      <h2 id="targets-heading">Maximum targets</h2>
+      <div class="targets">
+        <label for="target-width">Width (px)<input id="target-width" type="number" min="1" max="65535" step="1" inputmode="numeric"></label>
+        <label for="target-height">Height (px)<input id="target-height" type="number" min="1" max="65535" step="1" inputmode="numeric"></label>
+        <label for="target-size">File size (KiB)<input id="target-size" type="number" min="1" step="1" inputmode="numeric"></label>
+      </div>
+    </section>
+    <section id="results" aria-labelledby="results-heading" hidden>
+      <h2 id="results-heading">Metadata</h2>
+      <p id="filename"></p>
+      <dl id="metadata"></dl>
+      <h2>Target checks</h2>
+      <ul id="comparisons" aria-live="polite"></ul>
+    </section>
+    <aside aria-label="Limitations and privacy">
+      <p>Metadata checks only, not full pixel integrity validation or a guarantee of platform acceptance. Declared duration sums image-frame delays; zero delays are not adjusted to browser playback timing.</p>
+      <p>Your file stays in this browser session. No uploads, analytics, or saved file data.</p>
+    </aside>
+    <footer>
+      <nav aria-label="Moxion tools"><a href="https://moxion.ai/gif-resizer" rel="noreferrer noopener">Resize GIF on Moxion</a><a href="https://moxion.ai/gif-compressor" rel="noreferrer noopener">Compress GIF on Moxion</a></nav>
+      <p>External tools. Files are not transferred automatically.</p>
+    </footer>
+  </main>
+</body>
+</html>
